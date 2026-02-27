@@ -9,3 +9,5 @@ wheels/
 # Virtual environments
 .venv
 .env
+
+instructions_2.md
