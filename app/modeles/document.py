@@ -1,5 +1,6 @@
 from ..database import Base
 from sqlalchemy import Column, String, Integer, ForeignKey, DateTime
+from sqlalchemy.orm import relationship
 from datetime import datetime , timezone
 
 class Document(Base):
@@ -13,3 +14,4 @@ class Document(Base):
     owner_id= Column(Integer, ForeignKey("users.id"), nullable=False)
     created_at=Column(DateTime , default=lambda: datetime.now(timezone.utc))
     
+    owner = relationship("User", back_populates="documents")

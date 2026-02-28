@@ -14,6 +14,5 @@ class User(Base):
     created_at=Column(DateTime, default=lambda: datetime.now(timezone.utc) ) # nouvelle date  a chaque crea de ligne evite bugs
     
      #  user possède plusieurs documents +  consultations
-    owner=relationship("Document", back_populates="owner", cascade="all, delete-orphan") # supression d'un user supprime 
-    consultation=relationship("Document", back_populates="consultation", cascade="all, delete-orphan")
-    
+    documents = relationship("Document", back_populates="owner", cascade="all, delete-orphan") # supression d'un user supprime 
+    consultations = relationship("Consultation", back_populates="user", cascade="all, delete-orphan")
